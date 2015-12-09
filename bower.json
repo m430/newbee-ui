@@ -1,0 +1,21 @@
+{
+  "name": "ng-ui",
+  "version": "0.0.1",
+  "homepage": "https://github.com/ShadowZheng/ng-ui",
+  "authors": [
+    "Andy Zheng <azheng@objectivasoftware.com>"
+  ],
+  "description": "this is an angular ui libary",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "angular",
+    "ng-ui"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "angular-route": "~1.4.8",
+    "jquery": "~2.1.4"
+  }
+}
