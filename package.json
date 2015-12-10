@@ -1,0 +1,23 @@
+{
+  "name": "ng-ui",
+  "version": "0.0.1",
+  "description": "the angular ui libaray",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShadowZheng/ng-ui.git"
+  },
+  "keywords": [
+    "angular",
+    "ng-ui"
+  ],
+  "author": "andy zheng",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShadowZheng/ng-ui/issues"
+  },
+  "homepage": "https://github.com/ShadowZheng/ng-ui#readme"
+}

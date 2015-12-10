@@ -1,0 +1,53 @@
+/*--------------------Common-----------------------*/
+html,body {
+	height: 100%;
+	font-weight: 200;
+  font-family: Lato,Helvetica Neue,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif,Arial;
+}
+ul,li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 200;
+}
+
+/*--------------------Link-----------------------*/
+a {
+	color: #777;
+	text-decoration: none;
+	transition: color 0.3s ease-out;
+}
+a:hover, .active > a {
+	color: inherit;
+}
+
+/*--------------------SideBar-----------------------*/
+#sideBar {
+	width: 300px;
+	height: 100%;
+	padding-left: 40px;
+	font-size: 1.2em;
+	float: left;
+	border-right: 1px solid rgba(0,0,0,0.1);
+}
+#sideBar h1 {
+	font-size: 2em;
+	margin-bottom: 0.2em;
+}
+#sideBar li {
+	transition: font-size 0.3s ease-out;
+}
+#sideBar li:hover,#sideBar .active {
+	font-size: 1.5em;
+}
+/*--------------------Main-----------------------*/
+#main {
+	width: calc(100% - 341px);
+	float: right;
+}
+.content {
+	padding: 10px 15px;
+}
+
