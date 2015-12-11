@@ -646,9 +646,6 @@ ua.directive('uaWords', function () {
 						'';
 				}
 			}
-			/**
-    * trigger cliping animation onece;
-    */
 			function cliping() {
 				// calculate length of word;
 				var width = $next.getBoundingClientRect().width;

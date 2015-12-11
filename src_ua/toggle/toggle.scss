@@ -1,0 +1,448 @@
+$bg_color: #243040; // Ebony Clay
+$front_color: #ffffff; // White
+
+// fonts 
+
+$primary-font: 'Open Sans', sans-serif;
+$secondary-font: 'Merriweather', serif;
+
+// animation
+$animation-duration: 0.7s;
+
+.uac-toggle-bararrow {
+	display: block;
+	position: relative;
+	z-index: 3;
+
+	height: 54px;
+	width: 54px;
+	background-color: $bg_color;
+	border-radius: 50%;
+	margin: 10px;
+	
+	/* image replacement */
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+
+	transition:transform 0.5s;
+
+	.uac-togglebararrow-bar {
+		/* icon created in CSS */
+		position: absolute;
+		@include center; // mixin inside partials > _mixins.scss
+		width: 22px;
+		height: 2px;
+		background-color: $front_color;
+
+		&::before, &:after {
+			/* upper and lower lines of the menu icon */
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100%;
+			height: 100%; 
+			background-color: inherit;
+
+			/* Force Hardware Acceleration in WebKit */
+			transform:translateZ(0);
+			-webkit-backface-visibility: hidden;
+			backface-visibility: hidden;
+
+			transition: transform 0.5s, width 0.5s, top .3s ;
+		}
+
+		&::before {
+			transform-origin:right top;
+			transform: translateY(-6px);
+		}
+
+		&::after {
+			transform-origin:right bottom;
+			transform:translateY(6px);
+		}
+
+	}
+
+	.no-touch &:hover .uac-togglebararrow-bar::after {
+		top: 2px;
+	} 
+
+	.no-touch &:hover .uac-togglebararrow-bar::before {
+		top: -2px;
+	} 
+
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+
+	circle {
+		/* circle border animation */
+		transition:stroke-dashoffset 0.4s 0s;
+	}
+	&.uac-right{
+		.uac-togglebararrow-bar {
+			&::before {
+				left:0;
+				transform-origin:left top;
+				transform: translateY(-6px);
+			}
+
+			&::after {
+				left:0;
+				transform-origin:left bottom;
+				transform:translateY(6px);
+			}
+
+		}
+	}
+	.open>&, &.open {
+		/* rotate trigger when navigation becomes visible */
+		transform:rotate(180deg);
+
+		.uac-togglebararrow-bar::after, 
+		.uac-togglebararrow-bar::before {
+			/* animate arrow --> from hamburger to arrow */
+			width: 50%;
+			transition:transform 0.5s, width 0.5s;
+		}
+
+		.uac-togglebararrow-bar::before {
+			transform:rotate(45deg);
+		}
+
+		.uac-togglebararrow-bar::after {
+			transform:rotate(-45deg);
+		}
+
+		.no-touch &:hover .uac-togglebararrow-bar::after,
+		.no-touch &:hover .uac-togglebararrow-bar::before {
+			top: 0;
+		} 
+
+		circle {
+			stroke-dashoffset: 0;
+			transition:stroke-dashoffset 0.4s 0.3s;
+		}
+		&.uac-right{
+			transform:rotate(-180deg);
+			.uac-togglebararrow-bar::before {
+				transform:rotate(-45deg);
+			}
+
+			.uac-togglebararrow-bar::after {
+				transform:rotate(45deg);
+				left: 0;
+			}			
+		} 
+	}
+}
+
+
+// --------------------------------
+.uac-toggle-barcircle {
+  float: left;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 68px;
+  height: 68px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 10px;
+  /*--- make the size fit you need ---*/ 
+  transform:scale(0.8);
+  .uac-bottom,.uac-top{
+     background: #fff;
+      position: absolute;
+      display: block;
+      height: 4px;
+      width: 36px;
+      border-radius: 2px;
+
+     transform-origin: 34px 2px;
+     transform: rotate(0deg);
+     transition: all 500ms cubic-bezier(0.8, -1.1, 0.5, 1.9);
+  }
+  .uac-top{
+    top: 19px;
+    left: 14px;
+  }
+  .uac-bottom{
+    top: 41px;
+    left: 14px;
+  }
+  path,line{ 
+    stroke: white;
+    stroke-linecap: round;
+  }
+  .uac-circle {
+    display: inline-block;
+    border-radius: 50px;
+    vertical-align: middle;
+    margin: 0 5px;
+
+    stroke-dasharray: 1 100 32 300;
+    stroke-dashoffset: 101;
+    transition: all 750ms ease;
+  }
+  	&.uac-close{
+		.uac-top{
+		transform: translateX(-4.5px) rotate(-45deg);
+		}
+		.uac-bottom{
+		transform: translateX(-4.5px) rotate(45deg);
+		}
+		.uac-circle {
+			stroke-dasharray: 1 100 190 300;
+			stroke-dashoffset: 1;
+		}
+	}
+	&.uac-dark{
+		.uac-bottom,.uac-top{
+     		background: #333;
+     	}
+     	path,line{ 
+   			 stroke: #333;
+   		}
+	}
+}
+// ----------------------------------
+// ---------------------------- http://codepen.io/mallendeo/pen/eLIiG -----
+.uac-toggle-switch{
+  display: none;
+  // add default box-sizing for this scope
+  &, &:after, &:before,
+  & *, & *:after, & *:before,
+  & + .uac-toggle-switch-btn{
+    box-sizing: border-box;
+    &::selection{
+      background: none;
+    }
+  }
+  + .uac-toggle-switch-btn{
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+     user-select: none;
+    &:after, &:before{
+      position: relative;
+      display: block;
+      content: "";
+      width: 50%;
+      height: 100%;
+    }
+    &:after{
+      left: 0;
+    }
+    &:before{
+      display: none;
+    }
+  }
+  &:checked{
+    + .uac-toggle-switch-btn{
+      &:after{
+        left: 50%;
+      }
+    }
+  }
+}
+.uac-toggle-switch-ios{
+  + .uac-toggle-switch-btn{
+    background: #fbfbfb;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all .4s ease;
+    border: 1px solid #e8eae9;
+    &:after{
+      border-radius: 2em;
+      background: #fbfbfb;
+      transition:
+        left .3s cubic-bezier(
+          0.175, 0.885, 0.320, 1.275
+        ),
+        padding .3s ease, margin .3s ease;
+      box-shadow:
+        0 0 0 1px rgba(0,0,0,.1),
+        0 4px 0 rgba(0,0,0,.08);
+    } 
+    &:active{
+      box-shadow: inset 0 0 0 2em #e8eae9;
+      &:after{
+        padding-right: .8em;
+      }
+    }
+  }
+  &:checked{
+    + .uac-toggle-switch-btn{
+      background: #86d993;
+      &:active{
+        box-shadow: none;
+        &:after{
+          margin-left: -.8em;
+        }
+      }
+    }
+  }
+}
+// themes
+.uac-toggle-switch-light{
+	+ .uac-toggle-switch-btn{
+		background: #f0f0f0;
+		border-radius: 2em;
+		padding: 2px;
+		transition: all .4s ease;
+		&:after{
+			border-radius: 50%;
+			background: #fff;
+			transition: all .2s ease;
+		}
+	}
+	&:checked{
+		+ .uac-toggle-switch-btn{
+			background: #9FD6AE;
+		}
+	}
+}
+.uac-toggle-switch-skewed{
+	+ .uac-toggle-switch-btn{
+		overflow: hidden;
+		transform: skew(-10deg);
+		backface-visibility: hidden;
+		transition: all .2s ease;
+		font-family: sans-serif;
+		background: #888;
+		&:after, &:before{
+			transform: skew(10deg);
+			display: inline-block;
+			transition: all .2s ease;
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			line-height: 2em;
+			font-weight: bold;
+			color: #fff;
+
+			text-shadow: 0 1px 0 rgba(0,0,0,.4);
+		}
+		&:after{
+			left: 100%;
+			content: attr(data-tg-on);
+		}	
+		&:before{
+			left: 0;
+			content: attr(data-tg-off);
+		}	
+		&:active{
+			background: #888;
+			&:before{
+				left: -10%;
+			}
+		}
+	}
+	&:checked{
+		+ .uac-toggle-switch-btn{
+			background: #86d993;
+			&:before{
+				left: -100%;
+			}	
+			&:after{
+				left: 0;
+			}
+			&:active{
+				&:after{
+					left: 10%;
+				}
+			}
+		}
+	}
+}
+.uac-toggle-switch-flat{
+	+ .uac-toggle-switch-btn{
+		padding: 2px;
+		transition: all .2s ease;
+		background: #fff;
+		border: 4px solid #f2f2f2;
+		border-radius: 2em;
+		&:after{
+			transition: all .2s ease;
+			background: #f2f2f2;
+			content: "";
+			border-radius: 1em;
+		}
+	}
+	&:checked{
+		+ .uac-toggle-switch-btn{
+			border: 4px solid #7FC6A6;
+			&:after{
+				left: 50%;
+				background: #7FC6A6;
+			}
+		}
+	}
+}
+
+.uac-toggle-switch-flip{
+	+ .uac-toggle-switch-btn{
+		padding: 2px;
+		transition: all .2s ease;
+		font-family: sans-serif;
+		perspective: 100px;
+		&:after, &:before{
+			display: inline-block;
+			transition: all .4s ease;
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			line-height: 2em;
+			font-weight: bold;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			backface-visibility: hidden;
+			border-radius: 4px;
+		}
+		&:after{
+			content: attr(data-tg-on);
+			background: #02C66F;
+			transform: rotateY(-180deg);
+		}	
+		&:before{
+			background: #FF3A19;
+			content: attr(data-tg-off);
+		}
+
+		&:active{
+			&:before{
+				transform: rotateY(-20deg);
+			}
+		}
+	}
+	&:checked{
+		+ .uac-toggle-switch-btn{
+			&:before{
+				transform: rotateY(180deg);
+			}	
+			&:after{
+				transform: rotateY(0);
+				left: 0;
+				background: #7FC6A6;
+			}
+			&:active{
+				&:after{
+					transform: rotateY(20deg);
+				}
+			}
+		}
+	}
+}

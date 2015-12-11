@@ -1,0 +1,691 @@
+.ua-link{
+	position: relative;
+	display: inline-block;
+	outline: none;
+	text-decoration: none;
+	text-transform: uppercase;
+	&:hover,&:focus{
+		color: rgba(0,0,0,0.9);
+	}
+}
+/* Effect 1: Brackets */
+.ua-link-brucket{
+	&::before,&::after{
+		display: inline-block;
+		opacity: 0;
+		transition: transform 0.3s, opacity 0.2s;
+	}
+	&::before{
+		margin-right: 10px;
+		content: '[';
+		transform: translateX(20px);
+	}
+	&::after{
+		margin-left: 10px;
+		content: ']';
+		transform: translateX(-20px);
+	}
+	&:hover,&:focus{
+		&::before,&::after{
+			opacity: 1;
+			transform: translateX(0px);
+		}
+	}
+}
+
+
+/* Effect 2: 3D rolling links, idea from http://hakim.se/thoughts/rolling-links */
+$ua-link-rolling-bg: rgba(0,0,0,0.1);//#2195de;
+.ua-link-rolling{
+	line-height: 25px;
+	perspective: 1000px;
+	&>span{
+		position: relative;
+		display: inline-block;
+		padding: 0 1em;
+		background-color:$ua-link-rolling-bg;
+		transition: transform 0.3s;
+		transform-origin: 50% 0;
+		transform-style: preserve-3d;
+		&::before{
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,0.2);
+			content: attr(data-hover);
+			transition: background-color 0.3s;
+			transform: rotateX(-90deg);
+			transform-origin: 50% 0;
+		}
+	}
+	&:hover>span,&:focus>span{
+		transform: rotateX(90deg) translateY(-22px);
+	}
+}
+
+
+/* Effect 3: bottom line slides/fades in */
+.ua-link-lineup{
+	// padding: 0.5em 0;
+	&::after{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		opacity: 0;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateY(15px);
+	}
+	&:hover,&:focus{
+		&::after{
+			opacity: 1;
+			transform: translateY(5px);
+		}
+	}
+}
+
+/* Effect 4: bottom border enlarge */
+.ua-link-linedown{
+	padding: 0 0 0.3em;
+	&::after{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		opacity: 0;
+		transition: height 0.3s, opacity 0.3s, transform 0.3s;
+		transform: translateY(-10px);
+	}
+	&:hover,&:focus{
+		&::after{
+			height: 5px;
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+}
+
+
+/* Effect 5: same word slide in */
+.ua-link-slideup{
+	overflow: hidden;
+	padding: 0 4px;
+	height: 1em;
+	&>span{
+		position: relative;
+		display: inline-block;
+		transition: transform 0.3s;
+		&::before{
+			position: absolute;
+			top: 100%;
+			content: attr(data-hover);
+			font-weight: 700;
+			-webkit-transform: translate3d(0,0,0);
+			-moz-transform: translate3d(0,0,0);
+			transform: translate3d(0,0,0);
+		}
+	}
+	&:hover>span,&:focus>span{
+		transform: translateY(-100%);
+	}
+}
+
+/* Effect 6: same word slide in and border bottom */
+.ua-link-linedrop{
+	margin: 0 10px;
+	padding:0 1em 0.2em;
+	&::before{
+		position: absolute;
+		top: -0.2em;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		transition: top 0.3s;
+	}
+	&::after{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 2px;
+		height: 0px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		transition: height 0.3s;
+	}
+	&:hover,&:focus{
+		&::before{
+			top: 100%;
+			opacity: 1;
+		}
+		&::after{
+			height: 100%;
+		}
+	}
+}
+
+
+/* Effect 7: second border slides up */
+.ua-link-lineraise{
+	padding: 0 0.5em 0.3em;
+	&::before,&::after{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		transition: transform 0.3s;
+		transform: scale(0.85);
+	}
+	&::after{
+		opacity: 0;
+		transition: top 0.3s, opacity 0.3s, transform 0.3s;
+	}
+	&:hover,&:focus{
+		&::before,&::after{
+			transform: scale(1);
+		}
+		&::after{
+			top: -0.3em;
+			opacity: 1;
+		}
+	}
+}
+
+
+/* Effect 8: border slight translate */
+.ua-link-border{
+	padding: 0.5em 2em;
+	&::before,&::after{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 2px solid rgba(0,0,0,0.1);
+		content: '';
+		transition: transform 0.3s, opacity 0.3s;
+	}
+	&::after{
+		border-color: rgba(0,0,0,0.8);
+		opacity: 0;
+		transform: translateY(-7px) translateX(6px);
+	}
+	&:hover,&:focus{
+		&::before{
+			opacity: 0;
+			transform: translateY(5px) translateX(-5px);
+		}
+		&::after{
+			opacity: 1;
+			transform: translateY(0px) translateX(0px);
+		}
+	}
+}
+
+/* Effect 9: second text and borders */
+.ua-link-subtext{
+	// margin: 0 20px;
+	padding: 0 2em;
+	&::before,&::after{
+		position: absolute;
+		top: -0.5em;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		opacity: 1;
+		transition: opacity 0.3s, height 0.3s;
+	}
+	&::after{
+		top: 100%;
+		opacity: 0;
+		transition: transform 0.3s, opacity 0.3s;
+		transform: translateY(-10px);
+	}
+	&>span{
+		z-index: 2;
+		display: block;
+		font-weight: 300;
+	}
+	&>span::after{
+		content: attr(data-hover);
+		z-index: 1;
+		display: block;
+		padding: 8px 0 0 0;
+		color: rgba(0,0,0,0.3);
+		text-transform: none;
+		opacity: 0;
+		transition: transform 0.3s, opacity 0.3s;
+		transform: translateY(-100%);
+	}
+	&:hover,&:focus{
+		&::before{
+			height: 6px;
+		}
+		&::before,&::after{
+			opacity: 1;
+			transform: translateY(0px);
+		}
+		&>span::after{
+			opacity:1;
+			transform: translateY(-0.3em);
+		}
+	}
+}
+
+
+/* Effect 10: reveal, push out */
+.ua-link-push{
+	z-index: 1;
+	overflow: hidden;
+	// margin: 0 15px;
+	color: #fff;
+	&>span{
+		display: block;
+		padding: 0.5em 2em;
+		background: #0f7c67;
+		transition: transform 0.3s;
+	}
+	&:before{
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		padding: 10px 20px;
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,0.1);
+		color: #0f7c67;
+		content: attr(data-hover);
+		-webkit-transition: -webkit-transform 0.3s;
+		-moz-transition: -moz-transform 0.3s;
+		transition: transform 0.3s;
+		-webkit-transform: translateX(-25%);
+	}
+	&:hover,&:focus {
+		&>span{
+			transform: translateX(100%);
+		}
+		&::before{
+			transform: translateX(0%);
+		}
+	}
+}
+
+
+/* Effect 11: text fill based on Lea Verou's animation http://dabblet.com/gist/6046779 */
+$ua-link-textfill-color: #000;
+.ua-link-textfill{
+	padding: 0.3em 0;
+	border-top: 2px solid rgba(0,0,0,0.2);
+	text-shadow: none;
+	&::before{
+		position: absolute;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+		padding: 0.3em 0;
+		max-width: 0;
+		border-bottom: 2px solid $ua-link-textfill-color;
+		color: $ua-link-textfill-color;
+		content: attr(data-hover);
+		transition: max-width 0.5s;	
+	}
+	&:hover,&:focus{
+		&::before{
+			max-width: 100%;
+		}
+	}
+}
+
+/* Effect 12: circle */
+.ua-link-circle{
+	&::before,&::after{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 100px;
+		height: 100px;
+		border: 2px solid rgba(0,0,0,0.1);
+		border-radius: 50%;
+		content: '';
+		opacity: 0;
+		transition: transform 0.3s, opacity 0.3s;
+		transform: translateX(-50%) translateY(-50%) scale(0.2);	
+	}
+	&::after{
+		width: 90px;
+		height: 90px;
+		border-width: 6px;
+		transform: translateX(-50%) translateY(-50%) scale(0.8);	
+	}
+	&:hover,&:focus{
+		&::before,&::after{
+			opacity: 1;
+			transform: translateX(-50%) translateY(-50%) scale(1);
+		}
+	}
+}
+
+/* Effect 13: three circles */
+$ua-link-dots-color:rgba(0,0,0,0.2);
+.ua-link-dots{
+	transition: color 0.3s;
+	&::before{
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		color: transparent;
+		content: '•';
+		text-shadow: 0 0 transparent;
+		font-size: 1.2em;
+		transition: text-shadow 0.3s, color 0.3s;
+		transform: translateX(-50%);
+		pointer-events: none;
+	}
+	&:hover,&:focus{
+		color:rgba(0,0,0,0.4);
+		&::before{
+				color: $ua-link-dots-color;
+				text-shadow: 10px 0 $ua-link-dots-color, -10px 0 $ua-link-dots-color;
+		}
+	}
+}
+
+/* Effect 14: border switch */
+.ua-link-switchborder{
+	padding: 0 20px;
+	height: 45px;
+	line-height: 45px;
+	&::before,&::after{
+		position: absolute;
+		width: 45px;
+		height: 2px;
+		background-color: rgba(0,0,0,0.2);
+		content: '';
+		opacity: 0.2;
+		transition: all 0.3s;
+		pointer-events: none;	
+	}
+	&::before{
+		top: 0;
+		left: 0;
+		transform: rotate(90deg);
+		transform-origin: 0 0;	
+	}
+	&::after{
+		right: 0;
+		bottom: 0;
+		transform: rotate(90deg);
+		transform-origin: 100% 0;	
+	}
+	&:hover,&:focus{
+		&::before{
+			left: 50%;
+			transform: rotate(0deg) translateX(-50%);			
+		}
+		&::after{
+			right: 50%;
+			transform: rotate(0deg) translateX(50%);
+		}
+		&::before,&::after{
+			opacity:1;
+		}
+	}
+}
+
+/* Effect 15: scale down, reveal */
+.ua-link-shrink{
+	color: rgba(0,0,0,0.2);
+	font-weight: bolder;
+	font-family: arial,time-new-roman;
+	&::before{
+		// color: #fff;
+		content: attr(data-hover);
+		position: absolute;
+		transition: transform 0.3s, opacity 0.3s;	
+	}
+	&:hover,&:focus{
+		&::before{
+			transform: scale(0.9);
+			opacity: 0;		
+		}
+	}
+}
+
+/* Effect 16: fall down */
+.ua-link-fall{
+	color: #6f8686;
+	text-shadow: 0 0 1px rgba(111,134,134,0.3);
+	&::before{
+		color: #000;
+		content: attr(data-hover);
+		position: absolute;
+		opacity: 0;
+		text-shadow: 0 0 1px rgba(0,0,0,0.3);
+		transform: scale(1.1) translateX(10px) translateY(-10px) rotate(4deg);
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;	
+	}
+	&:hover,&:focus{
+		&::before{
+			transform: scale(1) translateX(0px) translateY(0px) rotate(0deg);
+			opacity: 1;		
+		}
+	}
+}
+
+
+/* Effect 17: move up fade out, push border */
+.ua-link-pushup{
+	color: #10649b;
+	text-shadow: none;
+	padding: 10px 0;
+	font-weight: bold;
+	font-family: sans-serif,arial;
+	&::before{
+		color: #000;
+		text-shadow: 0 0 1px rgba(255,255,255,0.3);
+		content: attr(data-hover);
+		position: absolute;
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;	
+	}
+	&::after{
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 2px;
+		background: rgba(0,0,0,0.2);
+		opacity: 0;
+		transform: translateY(5px);
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;
+	}
+	&:hover,&:focus{
+		&::before{
+			opacity: 0;
+			transform: translateY(-2px);	
+		}
+		&::after{
+			opacity: 1;
+			transform: translateY(0px);		
+		}
+	}
+}
+
+/* Effect 18: cross */
+.ua-link-cross{
+	// position: relative;
+	z-index: 1;
+	padding: 0 5px;
+	color:rgba(0,0,0,0.5);
+	font-weight: bold;
+	transition: color 0.3s;
+	&::before,&::after{
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 50%;
+		height: 2px;
+		margin-top: -1px;
+		background-color: rgba(0,0,0,0.2) ;
+		content: '';
+		z-index: -1;
+		-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+		-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+		transition: transform 0.3s, opacity 0.3s;
+		pointer-events: none;
+	}
+	&::before{
+		transform: translateY(-20px);
+	}
+	&::after{
+		transform: translateY(20px);
+	}
+	&:hover,&:focus{
+		color: #000;
+		&::before,&::after{
+			opacity: 0.7;
+		}
+		&::before{
+			transform: rotate(45deg);
+		}
+		&::after{
+			transform: rotate(-45deg);
+		}
+	}
+
+}
+
+
+/* Effect 19: 3D side */
+.ua-link-slide3d{
+	line-height: 2em;
+	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	perspective: 800px;
+	// width: 200px;
+	position: relative;
+	&>span{
+		position: relative;
+		display: inline-block;
+		padding: 0 24px;
+		background: rgba(0,0,0,0.1);
+		transition: transform 0.4s, background 0.4s;
+		transform-style: preserve-3d;
+		transform-origin: 50% 50% -50px;
+		&::before{
+			position: absolute;
+			top: 0;
+			left: 100%;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.15);
+			content: attr(data-hover);
+			transition: background 0.4s;
+			transform: rotateY(90deg);
+			transform-origin: 0 50%;
+			pointer-events: none;
+			backface-visibility:hidden;
+		}
+	}
+	&:hover,&:focus{
+		&>span{
+			background: rgba(0,0,0,0.2);
+			-webkit-transform: rotateY(-90deg);
+			-moz-transform: rotateY(-90deg);
+			transform: rotateY(-90deg);		
+			&::before{
+				background: rgba(0,0,0,0.2);	
+			}
+		}
+	}
+}
+
+/* Effect 20: 3D side */
+.ua-link-flip3d{
+	line-height: 2em;
+	perspective: 800px;
+	&>span{
+		position: relative;
+		display: inline-block;
+		padding: 3px 1.5em 0;
+		background: rgba(0,0,0,0.1);
+		box-shadow: inset 0 3px #2f4351;
+		transition: background 0.6s;
+		transform-origin: 50% 0;
+		transform-style: preserve-3d;
+		transform-origin: 0% 50%;
+		&::before{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.8);
+			color: #fff;
+			content: attr(data-hover);
+			transform: rotateX(270deg);
+			transition: transform 0.6s;
+			transform-origin: 0 0;
+			pointer-events: none;
+		}
+	}
+	&:hover,&:focus{
+		// background: #;	
+		&>span::before{
+			transform: rotateX(10deg);
+		}
+	}
+}
+
+/* Effect 21: borders slight translate */
+.ua-link-borderin{
+	padding: 10px;
+	color: #237546;
+	font-weight: 700;
+	text-shadow: none;
+	transition: color 0.3s;
+	&::before,&::after{
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background: rgba(0,0,0,0.2);
+		content: '';
+		opacity: 0;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateY(-10px);
+	}
+	&::before{
+		top: 0;
+		transform: translateY(-10px);
+	}
+	&::after{
+		bottom: 0;
+		transform: translateY(10px);
+	}
+	&:hover,&:focus{
+		color: rgba(0,0,0,0.2);
+		&::before,&::after{
+			opacity: 1;
+			transform: translateY(0px);
+		}
+	}
+}
