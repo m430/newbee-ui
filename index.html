@@ -12,13 +12,14 @@
 		<p>{{$location.path()}}</p>
 		<ul>
 			<li ng-repeat="comp in components" ng-class="{active: currHash == comp}">
-				<a href="#/{{comp}}">{{comp}}</a>
+				<a href="#{{comp}}">{{comp}}</a>
 			</li>
 		</ul>
 	</nav>
 	<div id="main">
 		<div class="content" ng-view></div>
 	</div>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
 	<script src="js/app.js"></script>

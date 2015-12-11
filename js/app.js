@@ -4,24 +4,30 @@
 * Description
 */
 angular.module('app', ['ngRoute'])
-
-.config(['$routeProvider', function ($routeProvider) {
-	var tplPath = '../template/';
+.constant('Const', {
+	tplPath: '../template/'
+})
+.config(['$routeProvider', 'Const', function ($routeProvider, Const) {
 	$routeProvider
 		.when('/:component', {
-			templateUrl: tplPath + 'words.html',
-			// controller: 'WordsCtrl'
+			templateUrl: Const.tplPath + 'component.html',
+			controller: 'ComponentCtrl'
 		})
 		.otherwise({ redirectTo: '/words' });
 }])
 
-.controller('SideBarCtrl', ['$scope', '$location', function ($scope, $location) {
-	$scope.$on('$routeChangeSuccess', function(e, route) {
-		$scope.currHash = route.params.component;		
+.controller('ComponentCtrl', ['$scope', 'Const', '$rootScope', function ($scope, Const, $rootScope) {
+	$scope.title = $rootScope.currHash;
+	$scope.compTpl = Const.tplPath + $rootScope.currHash;
+}])
+
+.controller('SideBarCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+	$rootScope.$on('$routeChangeSuccess', function(e, route) {
+		$rootScope.currHash = route.params.component;		
 	})
 	$scope.components = [
 		'words',
-		'button',
+		'buttons',
 		'links',
 		'toggle',
 		'loader',

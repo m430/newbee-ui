@@ -1,1 +1,1 @@
-angular.module('ng-ui', []);
+angular.module('ngUI', []);

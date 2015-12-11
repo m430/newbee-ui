@@ -25,12 +25,13 @@ a:hover, .active > a {
 
 /*--------------------SideBar-----------------------*/
 #sideBar {
-	width: 300px;
+	width: 260px;
 	height: 100%;
 	padding-left: 40px;
 	font-size: 1.2em;
 	float: left;
 	border-right: 1px solid rgba(0,0,0,0.1);
+	position: fixed;
 }
 #sideBar h1 {
 	font-size: 2em;
@@ -44,10 +45,19 @@ a:hover, .active > a {
 }
 /*--------------------Main-----------------------*/
 #main {
-	width: calc(100% - 341px);
+	width: calc(100% - 301px);
 	float: right;
+	opacity: 1;
+	height: 100%;
+	transition: opacity 0.3s ease, visibility 0s;
+}
+#main.hidding {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0s 0.4s;
 }
 .content {
-	padding: 10px 15px;
+	padding: 10px 20px;
+	height: calc(100% - 20px);
 }
 
