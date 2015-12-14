@@ -41,10 +41,10 @@ gulp.task('sass-newbee', function() {
 gulp.task('js-newbee', function() {
   gulp.src(paths.js_newbee)
     .pipe(concat('newbee.js'))
-    .pipe(uglify({
-      compress:true,
-      mangle:false,
-    })) 
+    // .pipe(uglify({
+    //   compress:true,
+    //   mangle:false,
+    // })) 
     .pipe(gulp.dest('./build/'))
     // dest to doc
     .pipe(gulp.dest('./doc/build/'));
@@ -67,7 +67,7 @@ gulp.task('watch', function() {
 });
 
 // ---------------------------------------- production -------------
-gulp.task('build', ['sass-newbee','js-newbee', 'sass-doc', 'js-doc']); 
+gulp.task('build', ['sass-newbee','js-newbee', 'sass-doc', 'js-doc']);
 gulp.task('default', ['build','watch']);
 
 // --------- utils ------------
@@ -75,5 +75,3 @@ function handleError(err) {
   console.log(err.toString());
   this.emit('end');
 }
-
-

@@ -1,1 +1,3 @@
-angular.module('newbee', []);
+angular.module('newbee', [
+  'newbee.words'
+]);
