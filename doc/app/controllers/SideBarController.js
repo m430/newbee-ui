@@ -1,8 +1,8 @@
 angular.module('app')
 
-.controller('SideBarCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+.controller('SideBarController', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 	$rootScope.$on('$routeChangeSuccess', function(e, route) {
-		$rootScope.currHash = route.params.component;		
+		$rootScope.path = $location.path().substring(1);	
 	})
 	$scope.components = [
 		'words',

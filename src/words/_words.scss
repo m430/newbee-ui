@@ -21,7 +21,7 @@
 	perspective: 300px;
 	b {
 		opacity: 0;
-		transfrom-origin: 50% 100%;
+		transform-origin: 50% 100%;
 		transform: rotateX(180deg);
 		&.nb-visible {
 			opacity: 1;
@@ -36,35 +36,35 @@
 }
 @keyframes nb-words-rotateIn {
 	0% {
-		transfrom: rotateX(180deg);
+		transform: rotateX(180deg);
 		opacity: 0;
 	}
 	35% {
-		transfrom: rotateX(120deg);
+		transform: rotateX(120deg);
 		opacity: 0;
 	}
 	65% {
 		opacity: 0;
 	}
 	100% {
-		transfrom: rotateX(360deg);
+		transform: rotateX(360deg);
 		opacity: 1;
 	}
 }
 @keyframes nb-words-rotateOut {
 	0% {
-		transfrom: rotateX(0deg);
+		transform: rotateX(0deg);
 		opacity: 1;
 	}
 	35% {
-		transfrom: rotateX(-40deg);
+		transform: rotateX(-40deg);
 		opacity: 1;
 	}
 	65% {
 		opacity: 0;
 	}
 	100% {
-		transfrom: rotateX(180deg);
+		transform: rotateX(180deg);
 		opacity: 0;
 	}
 }

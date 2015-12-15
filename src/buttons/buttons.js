@@ -1,12 +1,19 @@
 angular.module('newbee.buttons', [])
 
-.controller('ButtonsController', function() {
+.directive('nbButton', NbButtonDirective);
 
-})
+function NbButtonDirective() {
+	return {
+		restrict: 'E',
+		replace: true,
+		template: getTemplate,
+		link: getLink
+	}
 
-.directive('nbRadio', ['$scope', function($scope) {
-  return {
-    restrict: 'E',
-    
-  }
-}]);
+	function getTemplate() {
+
+	}
+	function getLink() {
+		
+	}
+}
