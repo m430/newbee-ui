@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-ui Demos</title>
+	<link rel="stylesheet" href="bower_components/jquery-ui/jquery-ui.min.css">
+</head>
+<body>
+	<input type="text" id="datepicker" value="2015-01-02">
+
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
+	<script>
+		$(function(){
+			$.datepicker._daylightSavingAdjust = function(date, defaultDate) {
+				if (defaultDate) {
+					return defaultDate;
+				}
+				if (!date) {
+					return null;
+				}
+				date.setHours(date.getHours() > 12 ? date.getHours() + 2 : 0);
+				return date;
+			}
+			$('#datepicker').datepicker({
+				// defaultDate: +7
+			});
+		})
+	</script>
+</body>
+</html>
