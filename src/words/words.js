@@ -85,7 +85,7 @@ function NbWordDirective($interval, $timeout) {
 		}
 
 		function cliping() {
-			var $next = $ele.find('b')[$scope.nextIndex];
+			var $next = $ele.find('b')[$scope.activeIndex];
 			var width = $next.clientWidth;
 			$ele.width(0);
 			setTimeout(function() {
@@ -93,11 +93,11 @@ function NbWordDirective($interval, $timeout) {
 			}, 1000);
 		}
 
-		// if (style == 'clip') $timeout(cliping, 0);
-
-		$scope.$on('ngRepeatFinished', function() {
-			if (style == 'clip') cliping();			
-		});
+		if (style == 'clip') {
+			$scope.$on('ngRepeatFinished', function() {
+				cliping();			
+			})
+		};
 
 		$scope.$on('$destroy', function() {
 			$interval.cancel($animatorTimer);
