@@ -1,3 +1,262 @@
-button {
-	background:red;
+.nb-button {
+	user-select: none;
+	position: relative;
+	outline: none;
+	border: 0;
+	padding: 10px 20px;
+	margin: 0 4px;
+	background: transparent;
+	white-space: nowrap;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 3px;
+	transition: box-shadow 0.3s cubic-bezier(0.35,0,0.25,1),
+				background-color 0.3s cubic-bezier(0.35,0,0.25,1),
+				transform 0.3s cubic-bezier(0.35,0,0.25,1);
+	&:hover, &:focus {
+		background-color: rgba(158,158,158,0.1);
+	}
+	&.nb-raised:not([disabled]) {
+		background-color: rgba(158,158,158,0.1);
+		box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+		&:hover {
+			box-shadow: 0 2px 8px 0 rgba(0,0,0,0.26);
+		}
+	}
+
+	// size
+	&.nb-btn-xlg {
+		font-size: 40px;
+		border-radius: 6px;
+	}
+	&.nb-btn-lg {
+		font-size: 30px;
+	}
+	&.nb-btn-sm {
+		font-size: 16px;
+	}
+	&.nb-btn-xs {
+		font-size: 8px;
+		padding: 2px 10px;
+	}
+
+	// color 
+	&.nb-btn-red {
+		color: map-get($color-red, '400');
+		&.nb-raised {
+			background-color: map-get($color-red, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-red, '400');
+			color: map-get($color-red, '400');
+		}
+	}
+	&.nb-btn-pink {
+		color: map-get($color-pink, '400');
+		&.nb-raised {
+			background-color: map-get($color-pink, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-pink, '400');
+			color: map-get($color-pink, '400');
+		}		
+	}
+	&.nb-btn-deep-purple {
+		color: map-get($color-deep-purple, '400');
+		&.nb-raised {
+			background-color: map-get($color-deep-purple, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-deep-purple, '400');
+			color: map-get($color-deep-purple, '400');
+		}		
+	}
+	&.nb-btn-indigo {
+		color: map-get($color-indigo, '400');
+		&.nb-raised {
+			background-color: map-get($color-indigo, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-indigo, '400');
+			color: map-get($color-indigo, '400');
+		}		
+	}
+	&.nb-btn-blue {
+		color: map-get($color-blue, '400');
+		&.nb-raised {
+			background-color: map-get($color-blue, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-blue, '400');
+			color: map-get($color-blue, '400');
+		}		
+	}
+	&.nb-btn-light-blue {
+		color: map-get($color-light-blue, '400');
+		&.nb-raised {
+			background-color: map-get($color-light-blue, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-light-blue, '400');
+			color: map-get($color-light-blue, '400');
+		}		
+	}
+	&.nb-btn-cyan {
+		color: map-get($color-cyan, '400');
+		&.nb-raised {
+			background-color: map-get($color-cyan, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-cyan, '400');
+			color: map-get($color-cyan, '400');
+		}		
+	}
+	&.nb-btn-teal {
+		color: map-get($color-teal, '400');
+		&.nb-raised {
+			background-color: map-get($color-teal, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-teal, '400');
+			color: map-get($color-teal, '400');
+		}		
+	}
+	&.nb-btn-green {
+		color: map-get($color-green, '400');
+		&.nb-raised {
+			background-color: map-get($color-green, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-green, '400');
+			color: map-get($color-green, '400');
+		}		
+	}
+	&.nb-btn-light-green {
+		color: map-get($color-light-green, '400');
+		&.nb-raised {
+			background-color: map-get($color-light-green, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-light-green, '400');
+			color: map-get($color-light-green, '400');
+		}		
+	}
+	&.nb-btn-lime {
+		color: map-get($color-lime, '400');
+		&.nb-raised {
+			background-color: map-get($color-lime, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-lime, '400');
+			color: map-get($color-lime, '400');
+		}		
+	}
+	&.nb-btn-yellow {
+		color: map-get($color-yellow, '400');
+		&.nb-raised {
+			background-color: map-get($color-yellow, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-yellow, '400');
+			color: map-get($color-yellow, '400');
+		}		
+	}
+	&.nb-btn-amber {
+		color: map-get($color-amber, '400');
+		&.nb-raised {
+			background-color: map-get($color-amber, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-amber, '400');
+			color: map-get($color-amber, '400');
+		}		
+	}
+	&.nb-btn-orange {
+		color: map-get($color-orange, '400');
+		&.nb-raised {
+			background-color: map-get($color-orange, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-orange, '400');
+			color: map-get($color-orange, '400');
+		}		
+	}
+	&.nb-btn-deep-orange {
+		color: map-get($color-deep-orange, '400');
+		&.nb-raised {
+			background-color: map-get($color-deep-orange, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-deep-orange, '400');
+			color: map-get($color-deep-orange, '400');
+		}		
+	}
+	&.nb-btn-brown {
+		color: map-get($color-brown, '400');
+		&.nb-raised {
+			background-color: map-get($color-brown, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-brown, '400');
+			color: map-get($color-brown, '400');
+		}		
+	}
+	&.nb-btn-gray {
+		color: map-get($color-gray, '400');
+		&.nb-raised {
+			background-color: map-get($color-gray, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-gray, '400');
+			color: map-get($color-gray, '400');
+		}		
+	}
+	&.nb-btn-blue-gray {
+		color: map-get($color-blue-gray, '400');
+		&.nb-raised {
+			background-color: map-get($color-blue-gray, '400');
+			color: #fff;
+		}
+		&.nb-ghost {
+			border-color: map-get($color-blue-gray, '400');
+			color: map-get($color-blue-gray, '400');
+		}		
+	}
+}
+
+.nb-button-ripple {
+	position: absolute;
+	background: rgba(0,0,0,0.15);
+	border-radius: 100%;
+	transform: scale(0);
+	pointer-events: none;
+	&.nb-animate {
+		animation: nb-btn-ripple 0.75s ease-out;
+	}
+}
+@keyframes nb-btn-ripple {
+	to {
+		transform: scale(2);
+		opacity: 0;
+	}
 }
