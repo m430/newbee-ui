@@ -8,25 +8,42 @@
 <body>
 	<input type="text" id="datepicker" value="2015-01-02">
 
-
+	<script type="text/javascript">
+		Function.prototype.after = function(fn) {
+			var __self = this;
+			__self.apply(this, arguments);
+			fn();
+		}
+	</script>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/jquery-ui/jquery-ui.js"></script>
 	<script>
 		$(function(){
-			$.datepicker._daylightSavingAdjust = function(date, defaultDate) {
-				if (defaultDate) {
-					return defaultDate;
+
+			$.datepicker._gotoToday = function(id) {
+				var date,
+				target = $(id),
+				inst = this._getInst(target[0]);
+
+				if (this._get(inst, "gotoCurrent") && inst.currentDay) {
+					inst.selectedDay = inst.currentDay;
+					inst.drawMonth = inst.selectedMonth = inst.currentMonth;
+					inst.drawYear = inst.selectedYear = inst.currentYear;
+				} else {
+					date = new Date();
+					inst.selectedDay = date.getDate();
+					inst.drawMonth = inst.selectedMonth = date.getMonth();
+					inst.drawYear = inst.selectedYear = date.getFullYear();
 				}
-				if (!date) {
-					return null;
-				}
-				date.setHours(date.getHours() > 12 ? date.getHours() + 2 : 0);
-				return date;
+				this._notifyChange(inst);
+				this._adjustDate(target);
 			}
 			$('#datepicker').datepicker({
 				// defaultDate: +7
 			});
-		})
+		});
+
+		
 	</script>
 </body>
 </html>

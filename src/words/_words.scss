@@ -174,3 +174,290 @@
 		}
 	}
 }
+
+// zoom
+.nb-words.nb-words-zoom {
+	perspective: 300px;
+	b {
+		opacity: 0;
+		&.nb-visible {
+			opacity: 1;
+			animation: nb-words-zoomIn .8s;
+		}
+		&.nb-hidden {
+			animation: nb-words-zoomOut .8s;
+		}
+	}
+}
+@keyframes nb-words-zoomIn {
+	0% {
+		opacity: 0;
+		transform: translateZ(100px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateZ(0);
+	}
+}
+@keyframes nb-words-zoomOut {
+	0% {
+		opacity: 1;
+		transform: translateZ(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateZ(-100px);
+	}
+}
+
+// push
+.nb-words.nb-words-push {
+	b {
+		opacity: 0;
+		&.nb-visible {
+			opacity: 1;
+			animation: nb-words-pushIn .6s;
+		}
+		&.nb-hidden {
+			animation: nb-words-pushOut .6s;
+		}
+	}
+}
+@keyframes nb-words-pushIn {
+	0% {
+		opacity: 0;
+		transform: translateX(-100%);
+	}
+	60% {
+		opacity: 1;
+		transform: translateX(10%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+@keyframes nb-words-pushOut {
+	0% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	60% {
+		opacity: 0;
+		transform: translateX(110%);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(100%);
+	}
+}
+
+// letter-rotateX
+.nb-words.nb-letter-rotateX {
+	perspective: 300px;
+	i, em {
+		display: inline-block;
+		backface-visibility: hidden;
+	}
+	b {
+		&.nb-visible {
+			opacity: 1;
+			i {
+				opacity: 1;
+			}
+		}
+	}
+	i {
+		transform-style: preserve-3d;
+		transform: translateZ(-20px) rotateX(90deg);
+		opacity: 0;
+		&.nb-in {
+			animation: nb-letter-rotateX-in .4s forwards;
+		}
+		&.nb-out {
+			animation: nb-letter-rotateX-out .4s forwards;
+		}		
+	}
+	em {
+		transform: translateZ(20px);
+	}
+}
+@keyframes nb-letter-rotateX-in {
+	0% {
+		opacity: 0;
+		transform: translateZ(-20px) rotateX(90deg);
+	}
+	60% {
+		opacity: 1;
+		transform: tranlateZ(-20px) rotateX(-10deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateZ(-20px) rotateX(0deg);
+	}
+}
+@keyframes nb-letter-rotateX-out {
+	0% {
+		opacity: 1;
+		transform: translateZ(-20px) rotateX(0deg);
+	}
+	60% {
+		opacity: 0;
+		transform: translateZ(-20px) rotateX(-100deg);
+	}
+	100% {
+		opacity: 0;
+		transform: translateZ(-20px) rotateX(-90deg);
+	}
+}
+// letter-rotateY
+.nb-words.nb-letter-rotateY {
+	perspective: 300px;
+	i, em {
+		display: inline-block;
+		backface-visibility: hidden;
+	}
+	b {
+		&.nb-visible {
+			opacity: 1;
+			i {
+				opacity: 1;
+			}
+		}
+	}
+	i {
+		display: inline-block;
+		backface-visibility: hidden;
+		transform: rotateY(180deg);
+		opacity: 0;
+		.nb-visible & {
+			transform: rotateY(0deg);
+		}
+		&.nb-in {
+			animation: nb-letter-rotateY-in .4s forwards;
+		}
+		&.nb-out {
+			animation: nb-letter-rotateY-out .4s forwards;
+		}		
+	}
+}
+@keyframes nb-letter-rotateY-in {
+	0% {
+		opacity: 0;
+		transform: rotateY(180deg);
+	}
+	100% {
+		opacity: 1;
+		transform: rotateY(0deg);
+	}
+}
+@keyframes nb-letter-rotateY-out {
+	0% {
+		opacity: 1;
+		transform: rotateY(0deg);
+	}
+	100% {
+		opacity: 0;
+		transform: rotateY(-180deg);
+	}
+}
+
+// letter-scale 
+.nb-words.nb-letter-scale {
+	i {
+		display: inline-block;
+		opacity: 0;
+		transform: scale(0);
+		.nb-visible & {
+			opacity: 1;
+		}
+		&.nb-in {
+			animation: nb-letter-scaleUp .6s forwards;
+		}
+		&.nb-out {
+			animation: nb-letter-scaleDown .6s forwards;
+		}
+	}
+}
+@keyframes nb-letter-scaleUp {
+	0% {
+		opacity: 0;
+		transform: scale(0);
+	}
+	60% {
+		opacity: 1;
+		transform: scale(1.2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes nb-letter-scaleDown {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	60% {
+		opacity: 0;
+		transform: scale(0);
+	}
+}
+// letter-input
+.nb-words.nb-letter-input {
+	vertical-align: top;
+	overflow: hidden;
+	padding-right: 4px;
+	&:after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 90%;
+		width: 2px;
+		background-color: rgba(0,0,0,0.5);
+	}
+	&.nb-waiting:after {
+		animation: nb-pluse 1s infinite;
+	}
+	&.nb-selected {
+		background-color: map-get($color-blue, '200');
+		&:after {
+			visibility: hidden;
+		}
+		b {
+			color: #fff;
+		}
+	}
+	b {
+		visibility: hidden;
+		&.nb-visible {
+			visibility: visible;
+		}
+		&.nb-hidden {
+			visibility: hidden;
+		}
+	}
+	i {
+		position: absolute;
+		visibility: hidden;
+		&.nb-in {
+			position: relative;
+			visibility: visible;
+		}
+	}
+}
+@keyframes nb-pulse {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	40% {
+		transform: scale(0.9);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(0);
+		opacity: 0;
+	}
+}

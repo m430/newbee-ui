@@ -14,9 +14,9 @@ return {
 
 .directive('nbWord', NbWordDirective);
 
-function NbWordDirective($interval, $timeout) {
+function NbWordDirective($interval) {
 
-	var letterStyles = ['letter-rotatex', 'letter-rotatey', 'letter-scale', 'letter-roll', 'letter-type'];
+	var letterStyles = ['letter-rotateX', 'letter-rotateY', 'letter-scale', 'letter-input'];
 	function getController(scope, ele, attrs) {
 		console.log(scope.words);
 	}
@@ -24,7 +24,7 @@ function NbWordDirective($interval, $timeout) {
 		var style = $attrs.nbStyle || 'rotate';	// default style is rotate
 		var tpl = '<span class="nb-words">';
 		if (letterStyles.indexOf(style) != -1) {
-			tpl += '<b on-finish-render="ngRepeatFinished" ng-repeat="word in words" ng-class="{\'nb-visible\':activeIndex == $index, \'nb-hidden\':activeIndex - 1 == $index}"><i ng-repeat="letter in word2Letters(word)"><em>{{letter}}</em></i></b>';
+			tpl += '<b on-finish-render="ngRepeatFinished" ng-repeat="word in words" ng-class="{\'nb-visible\':activeIndex == $index, \'nb-hidden\':activeIndex - 1 == $index}"><i ng-repeat="letter in word2Letters(word) track by $index"><em>{{letter}}</em></i></b>';
 		} else {
 			tpl += '<b on-finish-render="ngRepeatFinished" ng-repeat="word in words" ng-class="{\'nb-visible\':activeIndex == $index, \'nb-hidden\':prevIndex == $index}">{{word}}</b>';
 		}
@@ -60,6 +60,7 @@ function NbWordDirective($interval, $timeout) {
 			if ($scope.nextIndex >= $scope.words.length) {
 				$scope.nextIndex = 0;
 			};
+			lettersAnimation();
 			fnStyle();
 		}
 
@@ -72,13 +73,7 @@ function NbWordDirective($interval, $timeout) {
 					}, 200);
 					break;
 				case 'clip':
-					setTimeout(cliping, _duration + 100);
-					break;
-				case 'letter-type':
-					$ele.removeClass('nb-waiting');
-					setTimeout(function() {
-						$ele.addClass('nb-waiting');
-					}, _duration + 100);
+					cliping();
 					break;
 				default: '';
 			}
@@ -87,17 +82,68 @@ function NbWordDirective($interval, $timeout) {
 		function cliping() {
 			var $next = $ele.find('b')[$scope.activeIndex];
 			var width = $next.clientWidth;
-			$ele.width(0);
+			$ele.width(width + 10);
 			setTimeout(function() {
-				$ele.width(width + 15);
-			}, 1000);
+				$ele.width(0);
+			}, _duration + 100);
 		}
 
-		if (style == 'clip') {
-			$scope.$on('ngRepeatFinished', function() {
-				cliping();			
-			})
-		};
+		// when repeat render finished
+		$scope.$on('ngRepeatFinished', function() {
+			if (style == 'clip') cliping();
+			if (letterStyles.indexOf(style) != -1) lettersAnimation();
+		});
+
+		function lettersAnimation() {
+			if (letterStyles.indexOf(style) != -1) {
+				var $words = $ele.find('b');
+				if (style == 'letter-input') {
+					$ele.removeClass('nb-waiting');
+					setTimeout(function() {
+						$ele.addClass('nb-selected');
+					}, _duration + 100);
+				}
+				letterIn($words.eq($scope.activeIndex).find('i'));
+				letterOut($words.eq($scope.prevIndex).find('i'));
+			}
+		}
+		var inLetterIndex = 0, outLetterIndex = 0;
+		function letterIn(letters) {
+			if (style == 'letter-input') {
+				$ele.removeClass('nb-selected');
+			};
+
+			if (letters[inLetterIndex]) {
+				letters[inLetterIndex].classList.remove('nb-out');
+				letters[inLetterIndex].classList.add('nb-in');
+			}
+			inLetterIndex++;
+			if (inLetterIndex < letters.length) {
+				setTimeout(function() {letterIn(letters)}, letterAnimateDelay);
+			} else {
+				inLetterIndex = 0;
+				if (style == 'letter-input') {
+					$ele.addClass('nb-waiting');
+				};
+			}
+		}
+		function letterOut(letters) {
+			if (style == 'letter-input') {
+				letters.removeClass('nb-in');
+				return;
+			}
+			if (letters[outLetterIndex]) {
+				letters[outLetterIndex].classList.remove('nb-in');
+				letters[outLetterIndex].classList.add('nb-out');
+			}
+			outLetterIndex++;
+			if (outLetterIndex < letters.length) {
+				setTimeout(function() {letterOut(letters)}, letterAnimateDelay);
+			} else {
+				letters.removeClass('nb-in');
+				outLetterIndex = 0;
+			}
+		}
 
 		$scope.$on('$destroy', function() {
 			$interval.cancel($animatorTimer);
@@ -111,6 +157,9 @@ function NbWordDirective($interval, $timeout) {
 			nbStyle: '@'
 		},
 		template: getTemplate,
-		link: getLink
+		link: getLink,
+		controller: function($scope) {
+		
+		}
 	};
 }
