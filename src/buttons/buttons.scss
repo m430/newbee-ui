@@ -26,6 +26,15 @@
 			box-shadow: 0 2px 8px 0 rgba(0,0,0,0.26);
 		}
 	}
+	&.nb-ghost {
+		border: 1px solid #333;
+		background-color: rgba(0,0,0,0);
+		box-shadow: none;
+		&:hover {
+			background-color: rgba(255,255,255, 0.1);
+			box-shadow: none;
+		}
+	}
 
 	// size
 	&.nb-btn-xlg {
@@ -220,26 +229,26 @@
 			color: map-get($color-brown, '400');
 		}		
 	}
-	&.nb-btn-gray {
-		color: map-get($color-gray, '400');
+	&.nb-btn-grey {
+		color: map-get($color-grey, '400');
 		&.nb-raised {
-			background-color: map-get($color-gray, '400');
+			background-color: map-get($color-grey, '400');
 			color: #fff;
 		}
 		&.nb-ghost {
-			border-color: map-get($color-gray, '400');
-			color: map-get($color-gray, '400');
+			border-color: map-get($color-grey, '400');
+			color: map-get($color-grey, '400');
 		}		
 	}
-	&.nb-btn-blue-gray {
-		color: map-get($color-blue-gray, '400');
+	&.nb-btn-blue-grey {
+		color: map-get($color-blue-grey, '400');
 		&.nb-raised {
-			background-color: map-get($color-blue-gray, '400');
+			background-color: map-get($color-blue-grey, '400');
 			color: #fff;
 		}
 		&.nb-ghost {
-			border-color: map-get($color-blue-gray, '400');
-			color: map-get($color-blue-gray, '400');
+			border-color: map-get($color-blue-grey, '400');
+			color: map-get($color-blue-grey, '400');
 		}		
 	}
 }

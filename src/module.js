@@ -1,3 +1,4 @@
 angular.module('newbee', [
-  'newbee.words'
+  'newbee.words',
+  'newbee.buttons'
 ]);
