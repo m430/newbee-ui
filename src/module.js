@@ -1,4 +1,5 @@
 angular.module('newbee', [
   'newbee.words',
-  'newbee.buttons'
+  'newbee.buttons',
+  'newbee.loader'
 ]);

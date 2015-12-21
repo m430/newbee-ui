@@ -48,3 +48,18 @@
 		margin: 5px;
 	}
 }
+.section-loader .loader-item {
+	float: left;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	span {
+		text-align: center;
+		display: inline-block;
+		width: 100%;
+	}
+	.nb-loader-liquidSquare {
+		top: 40px;
+		left: 35px;
+	}
+}

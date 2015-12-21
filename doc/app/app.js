@@ -26,8 +26,10 @@ angular.module('app', ['ngRoute', 'newbee'])
 			controller: 'WordController'
 		})
 		.when('/buttons', {
-			templateUrl: Const.tplPath + 'buttons.html',
-			controller: 'ButtonController'
+			templateUrl: Const.tplPath + 'buttons.html'
+		})
+		.when('/loader', {
+			templateUrl: Const.tplPath + 'loader.html'
 		})
 		.otherwise({ redirectTo: '/words' });
 }]);
