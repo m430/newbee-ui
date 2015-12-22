@@ -1,7 +1,13 @@
 // color schema
 @import 'color';
 
+// mixin
+@import 'mixin';
+
 // components
 @import '../buttons/buttons';
 @import '../words/words';
 @import '../loader/loader';
+@import '../toggle/toggle';
+@import '../radio/radio';
+@import '../checkbox/checkbox';

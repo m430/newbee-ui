@@ -5,21 +5,9 @@
 */
 angular.module('app', ['ngRoute', 'newbee'])
 .constant('Const', {
-	tplPath: '../template/',
-	title: 'andy'
+	tplPath: '../template/'
 })
-.directive('nbButton', [function () {
-	return {
-		restrict: 'E',
-		template: '<div>Hello Button</div>',
-		link: function (scope, iElement, iAttrs) {
-		}
-	};
-}])
 .config(['$routeProvider', 'Const', function ($routeProvider, Const) {
-	function getComponentTemplate() {
-
-	}
 	$routeProvider
 		.when('/words', {
 			templateUrl: Const.tplPath + 'words.html',
@@ -30,6 +18,12 @@ angular.module('app', ['ngRoute', 'newbee'])
 		})
 		.when('/loader', {
 			templateUrl: Const.tplPath + 'loader.html'
+		})
+		.when('/toggle', {
+			templateUrl: Const.tplPath + 'toggle.html'
+		})
+		.when('/radio', {
+			templateUrl: Const.tplPath + 'radio.html'
 		})
 		.otherwise({ redirectTo: '/words' });
 }]);
