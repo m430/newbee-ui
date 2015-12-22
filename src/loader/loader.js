@@ -10,8 +10,6 @@ function NbLoaderDirective() {
         <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/> \
       </svg> \
     </div>';
-	  tpls.liquidSquare = '<div class="nb-loader nb-loader-liquidSquare" id="__id__"> <div></div> <div></div> <div></div><div></div> </div>';
-
 	  tpls.fourdots = '<div class="nb-loader-fourdots"> \
 	    <div class="nb-loader-dot nb-loader-red"></div> \
 	    <div class="nb-loader-dot nb-loader-blue"></div> \
@@ -40,16 +38,12 @@ function NbLoaderDirective() {
 	  var type = iAttrs.type || 'stroke'; // default is stroke
 	  return tpls[type];
 	}
-	function getLink(scope, iEle, iAttrs, ctrl) {
-
-	}
 	return {
 		restrict: 'E',
 		replace: true,
 		scope: {
 			type: '@'
 		},
-		template: getTemplate,
-		link: getLink
+		template: getTemplate
 	}
 }
