@@ -25,5 +25,8 @@ angular.module('app', ['ngRoute', 'newbee'])
 		.when('/radio', {
 			templateUrl: Const.tplPath + 'radio.html'
 		})
+		.when('/checkbox', {
+			templateUrl: Const.tplPath + 'checkbox.html'
+		})
 		.otherwise({ redirectTo: '/words' });
 }]);
