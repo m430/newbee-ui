@@ -1,0 +1,85 @@
+$link-color: #81b3d2;
+$line-color: #d73444;
+.nb-link {
+	backface-visibility: hidden;
+	position: relative;
+	transition: color .5s ease;
+	text-decoration: none;
+	color: $link-color;
+	font-size: 20px;
+	&:hover {
+		color: $line-color;
+	}
+	&:before, &:after {
+		height: 5px;
+		width: 0;
+		background: $line-color;
+		content: '';
+		position: absolute;
+		transition: all .5s ease;
+	}
+	&:before {
+		top: -8px;
+	}
+	&:after {
+		bottom: -8px;
+	}
+	// l2r
+	&.nb-link-leftToRight {
+		&:hover:after {
+			width: 100%;
+		}
+		&:after {
+			left: 0;
+		}
+	}
+	
+	// r2l
+	&.nb-link-rightToLeft {
+		&:hover:after {
+			width: 100%;
+		}
+		&:after {
+			right: 0;
+		}
+	}
+
+	// startCenter
+	&.nb-link-startCenter {
+		&:hover:after {
+			width: 100%;
+		}
+		&:after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+	// top & bottom left to right
+	&.nb-link-topBottomL2R {
+		&:hover:before, &:hover:after {
+			width: 100%;
+		}
+		&:before, &:after {
+			left: 0;
+		}
+	}
+	// top & bottom right to left
+	&.nb-link-topBottomR2L {
+		&:hover:before, &:hover:after {
+			width: 100%;
+		}
+		&:before, &:after {
+			right: 0;
+		}
+	}
+	// top & bottom start center
+	&.nb-link-topBottomSC {
+		&:hover:before, &:hover:after {
+			width: 100%;
+		}
+		&:before, &:after {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+}

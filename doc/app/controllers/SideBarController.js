@@ -5,9 +5,9 @@ angular.module('app')
 		$rootScope.path = $location.path().substring(1);	
 	})
 	$scope.components = [
-		'words',
-		'buttons',
-		'links',
+		'word',
+		'button',
+		'link',
 		'toggle',
 		'loader',
 		'input',

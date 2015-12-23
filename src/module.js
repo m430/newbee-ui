@@ -4,5 +4,6 @@ angular.module('newbee', [
   'newbee.loader',
   'newbee.toggle',
   'newbee.radio',
-  'newbee.checkbox'
+  'newbee.checkbox',
+  'newbee.link'
 ]);

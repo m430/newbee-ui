@@ -9,12 +9,12 @@ angular.module('app', ['ngRoute', 'newbee'])
 })
 .config(['$routeProvider', 'Const', function ($routeProvider, Const) {
 	$routeProvider
-		.when('/words', {
-			templateUrl: Const.tplPath + 'words.html',
+		.when('/word', {
+			templateUrl: Const.tplPath + 'word.html',
 			controller: 'WordController'
 		})
-		.when('/buttons', {
-			templateUrl: Const.tplPath + 'buttons.html'
+		.when('/button', {
+			templateUrl: Const.tplPath + 'button.html'
 		})
 		.when('/loader', {
 			templateUrl: Const.tplPath + 'loader.html'
@@ -28,5 +28,8 @@ angular.module('app', ['ngRoute', 'newbee'])
 		.when('/checkbox', {
 			templateUrl: Const.tplPath + 'checkbox.html'
 		})
-		.otherwise({ redirectTo: '/words' });
+		.when('/link', {
+			templateUrl: Const.tplPath + 'link.html'
+		})
+		.otherwise({ redirectTo: '/word' });
 }]);
