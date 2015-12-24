@@ -6,7 +6,13 @@ function NbLinkDirective() {
 	function getTemplate(iEle, iAttrs) {
 		var text = iEle.html();
 		var theme = iAttrs.nbTheme;
-		return '<a href="#" class="nb-link nb-link-' + theme + '">'+text+'</a>';
+		var tpl = '';
+		if (theme == 'square') {
+			tpl += '<span class="nb-link-'+theme+'"><a class="nb-link" href="#">'+text+'</a>';
+		} else {
+			tpl += '<a href="#" class="nb-link nb-link-' + theme + '">'+text+'</a>';
+		}
+		return tpl;
 	}
 	return {
 		restrict: 'E',
