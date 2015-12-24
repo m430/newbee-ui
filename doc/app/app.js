@@ -31,5 +31,9 @@ angular.module('app', ['ngRoute', 'newbee'])
 		.when('/link', {
 			templateUrl: Const.tplPath + 'link.html'
 		})
+		.when('/select', {
+			templateUrl: Const.tplPath + 'select.html',
+			controller: 'SelectController'
+		})
 		.otherwise({ redirectTo: '/word' });
 }]);
