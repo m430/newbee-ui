@@ -6,5 +6,6 @@ angular.module('newbee', [
   'newbee.radio',
   'newbee.checkbox',
   'newbee.link',
-  'newbee.select'
+  'newbee.select',
+  'newbee.input'
 ]);
