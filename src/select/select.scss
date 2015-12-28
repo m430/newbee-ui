@@ -1,4 +1,4 @@
-.selectholder {
+.nb-select {
   clear: both;
 	width: 100%;
 	background: #eee;
@@ -8,69 +8,60 @@
 	color: #666;
 	transition: .1s ease-out;
 	cursor: pointer;
-}
-
-.selectholder .desc {
-	display: inline-block;
-	vertical-align: middle;
-	padding-left: .8em;
-	line-height: 2.4em;
-}
-
-.selectholder .pulldown {
-	float: right;
-	vertical-align: middle;
-	width: 2.4em;
-	height: 100%;
-	background-color: #ddd;
-	background-image: url('http://supereightstudio.com/img/pulldown.png');
-	background-size: cover;
-	transition: .1s ease-out;
-}
-
-.selectholder:hover,
-.activeselectholder {
-	background-color: #ddd;
-}
-
-.selectholder:hover .pulldown,
-.activeselectholder .pulldown {
-	background-color: #333;
-	background-image: url('http://supereightstudio.com/img/pulldown_hover.png');
-}
-
-.selectholder .selectdropdown {
-	position: relative;
-	top: 0;
-	left: 0;
-	background: #333;
-	color: #fff;
-	display: none;
-	clear: both;
-}
-
-.selectholder .selectdropdown span {
-	display: block;
-	border-bottom: solid 1px #555;
-	padding-left: .8em;
-	line-height: 2.4em;
-	width: 100%;
-	transition: background-color .1s ease-out;
-	box-sizing: border-box;
-}
-
-.selectholder .selectdropdown span:last-child {
-	border-bottom: none;
-}
-
-.selectholder .selectdropdown span.active {
-	background-color: #2A817C;
-	background-image: url('http://supereightstudio.com/img/radio_tick.png');
-	background-repeat: no-repeat;
-	background-size: 1.6em 1.6em;
-	background-position: 98% 50%;
-}
-
-.selectholder .selectdropdown span:hover {
-	background-color: #555;
+	.desc {
+		display: inline-block;
+		vertical-align: middle;
+		padding-left: .8em;
+		line-height: 2.4em;
+	}
+	.pulldown {
+		float: right;
+		vertical-align: middle;
+		width: 2.4em;
+		height: 100%;
+		background-color: #ddd;
+		background-image: url('http://supereightstudio.com/img/pulldown.png');
+		background-size: cover;
+		transition: .1s ease-out;
+	}
+	&:hover, 
+	.nb-select-active {
+		background-color: #ddd;
+	}
+	&:hover .pulldown,
+	.nb-select-active .pulldown {
+		background-color: #333;
+		background-image: url('http://supereightstudio.com/img/pulldown_hover.png');
+	}
+	.dropdown {
+		position: relative;
+		top: 0;
+		left: 0;
+		background: #333;
+		color: #fff;
+		display: none;
+		clear: both;
+		span {
+			display: block;
+			border-bottom: solid 1px #555;
+			padding-left: .8em;
+			line-height: 2.4em;
+			width: 100%;
+			transition: background-color .1s ease-out;
+			box-sizing: border-box;
+			&:last-child {
+				border-bottom: none;
+			}
+			&.active {
+				background-color: #2A817C;
+				background-image: url('http://supereightstudio.com/img/radio_tick.png');
+				background-repeat: no-repeat;
+				background-size: 1.6em 1.6em;
+				background-position: 98% 50%;
+			}
+			&:hover {
+				background-color: #555;
+			}
+		}
+	}
 }
