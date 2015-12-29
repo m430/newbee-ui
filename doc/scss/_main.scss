@@ -71,3 +71,41 @@
 	margin-right: 20px;
 	width: 400px;
 }
+.section-input {
+	margin: 0 -20px;
+	text-align: center;
+	padding: 40px 0;
+	&.bg1 {
+		background: #f0efee;
+	}
+	&.bg2 {
+		background: #2f3238;
+    color: #fff;
+	}
+	&.bg3 {
+		background: #d0d6d6;
+	}
+	&.bg4 {
+		background: #df6659;
+    color: #521e18;
+	}
+	&.bg5 {
+		background: #2f3238;
+    color: #fff;
+	}
+	&.bg6 {
+		background: #2fa8ec;
+	}
+	&.bg7 {
+		background: #3d4444;
+    color: #fff;
+	}
+	&.bg-default {
+		background: #f9f7f6;
+	}
+	h2 {
+		opacity: 0.1;
+		font-weight: bold;
+		margin-bottom: 40px;
+	}
+}
