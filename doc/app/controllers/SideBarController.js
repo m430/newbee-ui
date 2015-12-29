@@ -14,6 +14,7 @@ angular.module('app')
 		'checkbox',
 		'input',
 		'select',
+		'progress',
 		'modal',
 		'dropdown',
 		'date-picker',

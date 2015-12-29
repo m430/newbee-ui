@@ -38,5 +38,8 @@ angular.module('app', ['ngRoute', 'newbee'])
 		.when('/input', {
 			templateUrl: Const.tplPath + 'input.html'
 		})
+		.when('/progress', {
+			templateUrl: Const.tplPath + 'progress.html'
+		})
 		.otherwise({ redirectTo: '/word' });
 }]);

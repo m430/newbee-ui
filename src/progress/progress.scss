@@ -1,0 +1,25 @@
+.nb-progress {
+	width: 200px;
+	height: 200px;
+	position: relative;
+	background: #0cc;	
+	border-radius: 50%;
+	text-align: center;
+	line-height: 200px;
+	font-size: 25px;
+	.progress {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: 50%;
+		background: #fff;
+	}
+	.percents {
+		position: absolute;
+		z-index: 3;
+		text-align: center;
+
+	}
+}

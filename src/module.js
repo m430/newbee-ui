@@ -7,5 +7,6 @@ angular.module('newbee', [
   'newbee.checkbox',
   'newbee.link',
   'newbee.select',
-  'newbee.input'
+  'newbee.input',
+  'newbee.progress'
 ]);
