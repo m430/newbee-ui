@@ -1,25 +1,40 @@
+$progressSize: 200px;
+$progressColor: #81CE97;
 .nb-progress {
-	width: 200px;
-	height: 200px;
-	position: relative;
-	background: #0cc;	
-	border-radius: 50%;
-	text-align: center;
-	line-height: 200px;
-	font-size: 25px;
-	.progress {
-		width: 200px;
-		height: 200px;
-		position: absolute;
-		top: 0;
-		left: 0;
-		border-radius: 50%;
-		background: #fff;
-	}
-	.percents {
-		position: absolute;
-		z-index: 3;
-		text-align: center;
-
-	}
+  width: $progressSize;
+  height: $progressSize;
+  border-radius: 50%;
+  background-color: #E5E5E5;
+  position: relative;
+  &.gt-50 {
+    background-color: $progressColor;
+    .progress {
+    	clip: rect(auto, #{$progressSize / 2}, auto, auto);
+    	.progress-fill {
+    		clip: rect(auto, auto, auto, #{$progressSize / 2});
+    		background: #E5E5E5;
+    	}
+    }
+  }
+  .progress {
+  	@include circle($progressSize);
+  	clip: rect(auto, auto, auto, #{$progressSize / 2});
+  	.progress-fill {
+  		@include circle($progressSize);
+  		clip: rect(auto, #{$progressSize / 2}, auto, auto);
+  		background: $progressColor;
+  		// transition: transform 1s ease;
+  	}
+  }
+  .percents {
+  	@include circle(#{$progressSize / 1.21});
+  	background: #fff;
+  	text-align: center;
+  	line-height: #{$progressSize / 1.21};
+  	span {
+  		font-size: 2.6em;
+  		font-weight: bold;
+  		color: $progressColor;
+  	}
+  }
 }

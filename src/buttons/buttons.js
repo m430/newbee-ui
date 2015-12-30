@@ -41,9 +41,13 @@ function NbButtonDirective() {
 				if (!tAttrs.hasOwnProperty(attr) || ['$attr', '$$element'].indexOf(attr) >= 0) {
 					continue;
 				}
-				tpl.setAttribute(attr, tAttrs[attr]);
+				if (attr == 'ngClick') {
+					tpl.setAttribute('ng-click', tAttrs[attr]);
+				} else {
+					tpl.setAttribute(attr, tAttrs[attr]);
+				}
 			}
-			
+
 			tEle[0].parentNode.insertBefore(tpl, tEle[0]);
 			tEle[0].remove();
 			return getLink;
