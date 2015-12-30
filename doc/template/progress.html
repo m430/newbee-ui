@@ -1,8 +1,14 @@
-<button ng-click="setPercent(25)">25</button>
-<button ng-click="setPercent(45)">45</button>
-<button ng-click="setPercent(75)">75</button>
-<button ng-click="setPercent(100)">100</button>
-<nb-button ng-click="setPercent(100)">100</nb-button>
 <section class="section-progress">
-	<nb-progress data-percent="percent"></nb-progress>
+	<div class="btn-group">
+		<button ng-click="setPercent(25)">25</button>
+		<button ng-click="setPercent(45)">45</button>
+		<button ng-click="setPercent(75)">75</button>
+		<button ng-click="setPercent(100)">100</button>
+	</div>
+	<div class="item">
+		<nb-progress nb-type="circle" data-percent="percent"></nb-progress>
+	</div>
+	<div class="item">
+		<nb-progress nb-type="linear" data-percent="percent"></nb-progress>
+	</div>
 </section>
