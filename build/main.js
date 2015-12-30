@@ -5,7 +5,7 @@
 */
 angular.module('app', ['ngRoute', 'newbee'])
 .constant('Const', {
-	tplPath: '../template/'
+	tplPath: 'template/'
 })
 .config(['$routeProvider', 'Const', function ($routeProvider, Const) {
 	$routeProvider
