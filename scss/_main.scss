@@ -1,0 +1,120 @@
+/*--------------------SideBar-----------------------*/
+#sideBar {
+	width: 260px;
+	height: 100%;
+	padding-left: 40px;
+	font-size: 1.2em;
+	float: left;
+	border-right: 1px solid rgba(0,0,0,0.1);
+	position: fixed;
+}
+#sideBar h1 {
+	font-size: 2em;
+	margin-bottom: 0.2em;
+}
+#sideBar li {
+	transition: font-size 0.3s ease-out;
+}
+#sideBar li:hover,#sideBar .active {
+	font-size: 1.5em;
+}
+/*--------------------Main-----------------------*/
+#main {
+	width: calc(100% - 301px);
+	float: right;
+	opacity: 1;
+	height: 100%;
+	transition: opacity 0.3s ease, visibility 0s;
+}
+#main h1 {
+	padding-left: 20px;
+}
+#main.hidding {
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease, visibility 0s 0.4s;
+}
+.content {
+	padding: 10px 20px;
+}
+.demo-items h2 {
+	text-align: center;
+	font-size: 40px;
+}
+.section-btn {
+	margin: 10px 0;
+	button {
+		margin: 5px;
+	}
+}
+.section-loader .loader-item {
+	float: left;
+	width: 200px;
+	height: 200px;
+	position: relative;
+	text-align: center;
+	.nb-loader-liquidSquare {
+		top: 40px;
+		left: 35px;
+	}
+}
+.section-toggle .item {
+	float: left;
+	margin-right: 10px;
+}
+.section-link .item {
+	float: left;
+	margin: 0 30px 30px 0;
+}
+.section-select .item {
+	float: left;
+	margin-right: 20px;
+	width: 400px;
+}
+.section-input {
+	margin: 0 -20px;
+	text-align: center;
+	padding: 40px 0;
+	&.bg1 {
+		background: #f0efee;
+	}
+	&.bg2 {
+		background: #2f3238;
+    color: #fff;
+	}
+	&.bg3 {
+		background: #d0d6d6;
+	}
+	&.bg4 {
+		background: #df6659;
+    color: #521e18;
+	}
+	&.bg5 {
+		background: #2f3238;
+    color: #fff;
+	}
+	&.bg6 {
+		background: #2fa8ec;
+	}
+	&.bg7 {
+		background: #3d4444;
+    color: #fff;
+	}
+	&.bg-default {
+		background: #f9f7f6;
+	}
+	h2 {
+		opacity: 0.1;
+		font-weight: bold;
+		margin-bottom: 40px;
+	}
+}
+
+.section-progress {
+	.btn-group {
+		margin-bottom: 20px;
+	}
+	.item {
+		margin: 20px 0;
+	}
+}

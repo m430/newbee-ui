@@ -1,0 +1,33 @@
+/*--------------------Common-----------------------*/
+html,body {
+	height: 100%;
+	font-weight: 200;
+  font-family: Lato,Helvetica Neue,"Hiragino Sans GB","Microsoft YaHei","微软雅黑",STHeiti,"WenQuanYi Micro Hei",SimSun,sans-serif,Arial;
+}
+ul,li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 200;
+}
+
+.clear {
+	zoom: 1;
+}
+.clear:after {
+	content: '';
+	clear: both;
+	display: block;
+}
+
+/*--------------------Link-----------------------*/
+a {
+	color: #777;
+	text-decoration: none;
+	transition: color 0.3s ease-out;
+}
+a:hover, .active > a {
+	color: inherit;
+}

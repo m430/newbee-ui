@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>NewBee-UI</title>
+	<link rel="stylesheet" href="build/app.css">
+	<link rel="stylesheet" href="build/newbee.css">
+</head>
+<body>
+	<nav id="sideBar" ng-controller="SideBarController">
+		<h1>Newbee-UI</h1>
+		<ul>
+			<li ng-repeat="comp in components" ng-class="{active: path == comp}">
+				<a href="#{{comp}}">{{comp}}</a>
+			</li>
+		</ul>
+	</nav>
+	<div id="main">
+		<h1>{{path}}</h1>	
+		<div class="content" ng-view>
+		</div>
+	</div>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script src="build/newbee.js"></script>
+	<script src="build/main.js"></script>
+</body>
+</html>
